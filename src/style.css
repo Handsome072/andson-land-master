@@ -130,25 +130,25 @@ a {
 }
 
 .right-social .ic-twitter {
-  background-image: url(@/images/ant-design_twitter-outlined.svg);
+  background-image: url(@/assets/images/ant-design_twitter-outlined.svg);
 }
 .right-social .ic-facebook {
-  background-image: url(@/images/ant-design_facebook-filled.svg);
+  background-image: url(@/assets/images/ant-design_facebook-filled.svg);
 }
 .right-social .ic-linkedin {
-  background-image: url(@/images/ant-design_linkedin-filled.svg);
+  background-image: url(@/assets/images/ant-design_linkedin-filled.svg);
 }
 
 .sticky .ic-facebook {
-  background: url(@/images/ant-design_facebook-filled-color-primary.svg);
+  background: url(@/assets/images/ant-design_facebook-filled-color-primary.svg);
   background-size: cover;
 }
 .sticky .ic-twitter {
-  background: url(@/images/ant-design_twitter-outlined-color-primary.svg);
+  background: url(@/assets/images/ant-design_twitter-outlined-color-primary.svg);
   background-size: cover;
 }
 .sticky .ic-linkedin {
-  background: url(@/images/ant-design_linkedin-filled-color-primary.svg);
+  background: url(@/assets/images/ant-design_linkedin-filled-color-primary.svg);
   background-size: cover;
 }
 
