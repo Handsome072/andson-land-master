@@ -1,3 +1,267 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary: #2091f9;
+  --text-color: #252b42;
+  --drpshdw: drop-shadow(0px 8.14769px 63.1446px rgba(0, 0, 0, 0.15));
+  --font-family: 'Quicksand', sans-serif, system-ui;
+  --header-height: 187px;
+  --plan-gap: clamp(40px, 12vw, 80px);
+  --form-gap: clamp(22px, 6vw, 45px);
+  --btn-shdw: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: 'Quicksand', sans-serif, system-ui !important;
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0.2px;
+  color: var(--text-color);
+}
+
+body,
+main,
+footer {
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 6.854em;
+}
+h2 {
+  font-weight: 600;
+  font-size: 4.236em;
+}
+h3 {
+  font-weight: 500;
+  font-size: 2.618em;
+}
+h4,
+p,
+span,
+button.main,
+input,
+textarea,
+q,
+li {
+  font-weight: 400;
+  font-size: 1.618em;
+}
+h5 {
+  font-size: 1em;
+}
+h6 {
+  font-size: 0.618em;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+}
+
+section {
+  padding: 100px 0;
+  position: relative;
+  background-color: white;
+}
+
+section .container {
+  max-width: 1440px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 40px;
+}
+
+/* end here */
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: 0.2px;
+  line-height: 1;
+  transition: all 0.15s;
+}
+
+.active {
+  background: #2091f910;
+}
+
+.left-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.right-social {
+  display: inline-flex;
+  gap: 24px;
+}
+
+.right-social span {
+  display: block;
+  width: 33px;
+  height: 33px;
+  background-size: cover;
+}
+
+.right-social .ic-twitter {
+  background-image: url(@/images/ant-design_twitter-outlined.svg);
+}
+.right-social .ic-facebook {
+  background-image: url(@/images/ant-design_facebook-filled.svg);
+}
+.right-social .ic-linkedin {
+  background-image: url(@/images/ant-design_linkedin-filled.svg);
+}
+
+.sticky .ic-facebook {
+  background: url(@/images/ant-design_facebook-filled-color-primary.svg);
+  background-size: cover;
+}
+.sticky .ic-twitter {
+  background: url(@/images/ant-design_twitter-outlined-color-primary.svg);
+  background-size: cover;
+}
+.sticky .ic-linkedin {
+  background: url(@/images/ant-design_linkedin-filled-color-primary.svg);
+  background-size: cover;
+}
+
+button {
+  all: unset;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-10px);
+  transition: 0.2s all ease-in;
+}
+
+button.main {
+  color: white;
+  padding: 20px 60px;
+  padding: clamp(12px, 5vw, 20px) clamp(20px, 12vw, 60px);
+  border-radius: 35px;
+  margin: 0 auto;
+  line-height: 1.2;
+  box-shadow: var(--btn-shdw);
+}
+.section-title {
+  width: 100%;
+  max-width: 545px;
+  margin: auto;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title h2 {
+  line-height: 1.8;
+  text-align: center;
+  letter-spacing: 0.2px;
+  margin-bottom: 17px;
+}
+
+.section-title p {
+  line-height: 1.8;
+}
+
+/* FOoter */
+
+.footer-right .footer-social-link-list,
+.contact-social-link-list {
+  display: flex;
+  gap: 25px;
+  list-style-type: none;
+}
+
+.footer-right .footer-social-link-list li img,
+.contact-social-link-list li img {
+  width: 35px;
+  height: auto;
+}
+
+.footer-right .footer-social-link-list li a,
+.contact-social-link-list li a {
+  padding: 0;
+}
+
+.contact-social-link-list li img {
+  fill: var(--primary);
+}
+
+#loom-companion-mv3 {
+  display: none;
+}
+@media (max-width: 560px) {
+  :root {
+    --header-height: 100px;
+    --padding-lr: clamp(15px, 6vw, 30px);
+  }
+  h4,
+  p,
+  span,
+  button.main,
+  input,
+  textarea,
+  q,
+  li {
+    font-weight: 400;
+    font-size: 1.8em;
+  }
+
+  .left-container {
+    gap: 0;
+    flex-direction: row-reverse;
+    max-width: calc(100% - 50px);
+  }
+
+  .logo-center img {
+    max-width: 45vw;
+  }
+
+  body {
+    font-size: 8px;
+  }
+
+  section {
+    padding: 135px clamp(15px, 6vw, 30px);
+  }
+
+  section .container {
+    width: 100%;
+    margin: 0 !important;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
