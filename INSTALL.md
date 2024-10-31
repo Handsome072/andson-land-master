@@ -37,6 +37,7 @@ npm install
 Démarrez le serveur de développement avec la commande :
 
 npm run dev
+
 L'application sera accessible à l'adresse: http://localhost:5173/
 
 ### 5. Construire l'application pour la production
