@@ -7,7 +7,7 @@
       <h1 :class="{ 'animate-slide-down': showHeroText }">
         The best products start with Figma
       </h1>
-      <p :class="{ 'animate-scale-up': showParagraph }">
+      <p :class="{ 'animate-slide-up': showParagraph }">
         Most calendars are designed for teams. Slate is designed for
         freelancers.
       </p>
@@ -36,18 +36,16 @@ export default {
     this.showHeroText = true;
     setTimeout(() => {
       this.showParagraph = true;
-    }, 300);
+    }, 500);
 
     setTimeout(() => {
       this.showButton = true;
-    }, 600);
+    }, 1000); 
   },
 };
 </script>
 
 <style scoped>
-/* Hero  */
-
 #hero {
   position: relative;
   width: 100%;
@@ -68,6 +66,12 @@ export default {
   line-height: 1.8;
   text-align: center;
   max-width: 1200px;
+}
+
+#hero h1,
+#hero p,
+button {
+  opacity: 0; /* Opacité initiale */
 }
 
 #hero h1 {
@@ -119,27 +123,12 @@ button {
   }
 }
 
-@keyframes scale-up {
-  0% {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .animate-slide-down {
-  animation: slide-down 0.8s ease forwards;
+  animation: slide-down 1s ease forwards;
 }
 
 .animate-slide-up {
-  animation: slide-up 2.5s ease forwards;
-}
-
-.animate-scale-up {
-  animation: scale-up 1.5s ease forwards;
+  animation: slide-up 2s ease forwards;
 }
 
 @media (max-width: 560px) {

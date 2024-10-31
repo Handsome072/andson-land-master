@@ -1,5 +1,5 @@
 <template>
-  <section id="testimonials">
+  <section id="testimonials" :class="{ 'show': isVisible }" ref="testimonialsSection">
     <div class="container">
       <div class="section-title">
         <h2>Testimonials</h2>
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Boutons de navigation en dehors de testimonials-slider -->
+      <!-- Boutons de navigation -->
       <button
         class="testimoni-prev"
         @click="prevSlide"
@@ -60,6 +60,7 @@ export default {
   data() {
     return {
       currentIndex: 0,
+      isVisible: false,
       testimonials: [
         {
           message:
@@ -91,14 +92,25 @@ export default {
     },
     prevSlide() {
       this.currentIndex =
-        (this.currentIndex - 1 + this.testimonials.length) %
-        this.testimonials.length;
+        (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
     },
     setCurrentIndex(index) {
       this.currentIndex = index;
     },
+    handleScroll(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.isVisible = true;
+        }
+      });
+    },
   },
   mounted() {
+    const observer = new IntersectionObserver(this.handleScroll, {
+      threshold: 0.5,
+    });
+    observer.observe(this.$refs.testimonialsSection);
+
     setInterval(this.nextSlide, 5000);
   },
 };
@@ -233,6 +245,22 @@ button.testimoni-next {
   right: 0;
   background: url(@/assets/images/ic_round-navigate-next.svg) no-repeat center;
 }
+
+#testimonials {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#testimonials.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#testimonials .section-title {
+  margin-bottom: 0px;
+}
+
 @media (max-width: 560px) {
   #testimonials .testimonials-slider {
     display: flex;

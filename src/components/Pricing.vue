@@ -1,7 +1,7 @@
 <template>
   <section id="pricing">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title" ref="sectionTitle">
         <h2>Plans and Pricings</h2>
         <p>
           Most calendars are designed for teams. Slate is designed for
@@ -12,7 +12,8 @@
         <div
           v-for="(plan, index) in plans"
           :key="index"
-          :class="['plan', { 'featured-plan': plan.featured }]"
+          :class="['plan', { 'featured-plan': plan.featured, 'animate-plan': animatedPlans.includes(index) }]"
+          :style="{ transitionDelay: `${index * 0.3}s` }"
         >
           <div class="plan-title">
             <h3>{{ plan.title }}</h3>
@@ -36,8 +37,45 @@
 </template>
 
 <script>
+import { onMounted, ref } from 'vue';
+
 export default {
   setup() {
+    const sectionTitle = ref(null);
+    const animatedPlans = ref([]);
+    let titleAnimated = false;
+
+    onMounted(() => {
+      const handleScroll = () => {
+        if (sectionTitle.value) {
+          const rect = sectionTitle.value.getBoundingClientRect();
+          // Animation du section-title lorsqu'il est visible
+          if (rect.top < window.innerHeight - 200 && rect.bottom >= 0 && !titleAnimated) {
+            sectionTitle.value.classList.add('animate');
+            titleAnimated = true;
+          }
+
+          // Animation séquentielle des plans lorsqu'on continue à scroller
+          if (rect.bottom < window.innerHeight - 400 && titleAnimated) {
+            for (let i = 0; i < plans.length; i++) {
+              setTimeout(() => {
+                if (!animatedPlans.value.includes(i)) {
+                  animatedPlans.value.push(i);
+                }
+              }, i * 300); // 
+            }
+          }
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check on load
+
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    });
+
     const plans = [
       {
         title: 'FREE',
@@ -79,6 +117,8 @@ export default {
 
     return {
       plans,
+      sectionTitle,
+      animatedPlans,
     };
   },
 };
@@ -93,6 +133,14 @@ export default {
 #pricing .section-title {
   color: white;
   margin: 0 0 80px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#pricing .section-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #pricing .pricelist {
@@ -115,6 +163,14 @@ export default {
   gap: var(--plan-gap);
   height: max-content;
   width: 350px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.pricelist .plan.animate-plan {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .pricelist .featured-plan {

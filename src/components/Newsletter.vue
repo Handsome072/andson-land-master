@@ -1,5 +1,5 @@
 <template>
-  <section id="newsletter">
+  <section id="newsletter" ref="newsletterSection" :class="{'scrolled': hasScrolled}">
     <div class="container">
       <div class="newsletter-left w-full md:w-1/2">
         <img
@@ -7,14 +7,15 @@
           src="@/assets/images/ilustration/undraw_newsletter_vovu.svg"
           alt="newsletter illustration"
           class="mx-auto"
+          :class="{'animate': imageAnimationCompleted}"
         />
       </div>
-      <div class="newsletter-right w-full md:w-1/2 mt-8 md:mt-0 md:ml-12">
-        <span>At your Fingertips</span>
-        <h3>Lightning fast prototyping</h3>
-        <p class="font-bold">Subscribe to our Newsletter</p>
-        <p>Available exclusively on Figmaland</p>
-        <form @submit.prevent="subscribe">
+      <div class="newsletter-right w-full md:w-1/2 mt-8 md:mt-0 md:ml-12" :class="{'show': imageAnimationCompleted}">
+        <span :class="{'animate': hasScrolled}">At your Fingertips</span>
+        <h3 :class="{'animate': hasScrolled}">Lightning fast prototyping</h3>
+        <p class="font-bold" :class="{'animate': hasScrolled}">Subscribe to our Newsletter</p>
+        <p :class="{'animate': hasScrolled}">Available exclusively on Figmaland</p>
+        <form @submit.prevent="subscribe" :class="{'animate': hasScrolled}">
           <label for="input-mail-at-newsletter" class="sr-only">Email</label>
           <input
             required
@@ -37,9 +38,32 @@ export default {
   data() {
     return {
       email: '',
+      hasScrolled: false,
+      imageAnimationCompleted: false,
     };
   },
+  mounted() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            this.hasScrolled = true;
+            this.animateImageFirst();
+            observer.disconnect(); // Arrête l'observation après l'animation initiale
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(this.$refs.newsletterSection);
+  },
   methods: {
+    animateImageFirst() {
+      // Délai pour simuler l'animation de l'image avant de passer au reste
+      setTimeout(() => {
+        this.imageAnimationCompleted = true;
+      }, 1000); 
+    },
     subscribe() {
       console.log(`Email subscribed: ${this.email}`);
       this.email = '';
@@ -53,6 +77,73 @@ export default {
 </script>
 
 <style scoped>
+.newsletter-left img,
+.newsletter-right {
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.newsletter-left img.animate {
+  animation: rotateScaleUp 0.5s forwards;
+}
+
+.newsletter-right {
+  transform: translateX(50px);
+  opacity: 0; 
+}
+.newsletter-right span,
+.newsletter-right h3,
+.newsletter-right p,
+.newsletter-right form{
+  opacity: 0; 
+}
+.newsletter-right.show {
+  opacity: 1; 
+  transform: translateX(0);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.newsletter-right span.animate {
+  animation: fadeInRight 0.5s 1.2s forwards;
+}
+
+.newsletter-right h3.animate {
+  animation: fadeInRight 0.5s 1.4s forwards;
+}
+
+.newsletter-right p.font-bold.animate {
+  animation: fadeInRight 0.5s 1.6s forwards;
+}
+
+.newsletter-right p:not(.font-bold).animate {
+  animation: fadeInRight 0.5s 1.8s forwards;
+}
+
+.newsletter-right form.animate {
+  animation: fadeInRight 0.5s 2s forwards;
+}
+/* Keyframes */
+@keyframes rotateScaleUp {
+  0% {
+    transform: rotate(-720deg) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 form button.main {
   color: white;
   padding: 20px 60px;
@@ -139,10 +230,6 @@ button.main {
 
 .newsletter-right input::placeholder {
   color: #18171d93;
-}
-
-.newsletter-right > * {
-  visibility: visible !important;
 }
 
 @media (max-width: 560px) {

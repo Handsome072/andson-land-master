@@ -149,6 +149,7 @@ export default {
 #mobile-menu {
   display: none;
 }
+
 header {
   display: flex;
   align-items: center;

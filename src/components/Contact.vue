@@ -1,14 +1,14 @@
 <template>
   <section id="contact">
     <div class="container">
-      <div class="section-title">
+      <div class="section-title" ref="sectionTitle">
         <h2>Contact Us</h2>
         <p>
           Most calendars are designed for teams. Slate is designed for
           freelancers
         </p>
       </div>
-      <div class="contact-form-left">
+      <div class="contact-form-left" ref="contactFormLeft">
         <form @submit.prevent="submitForm">
           <h3>Contact Us</h3>
           <label for="input-name">Your Name</label>
@@ -41,12 +41,12 @@
         </form>
       </div>
       <div class="contact-info-right">
-        <ul class="contact-info-list">
+        <ul class="contact-info-list" ref="contactInfoList">
           <li><span class="contact_location"></span>{{ address }}</li>
           <li><span class="contact_phone"></span>{{ phone }}</li>
           <li><span class="contact_mail"></span>{{ email }}</li>
         </ul>
-        <div class="google_maps">
+        <div class="google_maps" ref="googleMaps">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.133871563915!2d109.6492080758221!3d-7.66875367590129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aca0881659fcb%3A0x1fb6a781a4f47e70!2sAlun-alun%20Kota%20Kebumen!5e0!3m2!1sid!2sid!4v1682099392332!5m2!1sid!2sid"
             style="width: 100%; height: 400px; border: none"
@@ -81,8 +81,7 @@ export default {
         email: '',
         message: '',
       },
-      address:
-        '6386 Spring St undefined Anchorage, Georgia 12473 United States',
+      address: '6386 Spring St undefined Anchorage, Georgia 12473 United States',
       phone: '(843) 555-0130',
       email: 'willie.jennings@example.com',
       socialLinks: [
@@ -112,23 +111,114 @@ export default {
   },
   methods: {
     submitForm() {
-      // Logique de soumission du formulaire
       console.log('Form data:', this.form);
     },
-    initializeMap() {
-      const map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 61.2181, lng: -149.9003 },
-        zoom: 10,
-      });
+    handleScroll() {
+      const sectionTitle = this.$refs.sectionTitle;
+      const contactFormLeft = this.$refs.contactFormLeft;
+      const contactInfoList = this.$refs.contactInfoList;
+      const googleMaps = this.$refs.googleMaps;
+
+      const sectionTitleRect = sectionTitle.getBoundingClientRect();
+      if (sectionTitleRect.top < window.innerHeight -200 && sectionTitleRect.bottom >= 0) {
+        sectionTitle.classList.add('visible');
+      }
+
+      const formRect = contactFormLeft.getBoundingClientRect();
+      if (formRect.top < window.innerHeight -300  && formRect.bottom >= 0) {
+        contactFormLeft.classList.add('visible');
+      }
+
+      const infoListRect = contactInfoList.getBoundingClientRect();
+      if (infoListRect.top < window.innerHeight -300  && infoListRect.bottom >= 0) {
+        contactInfoList.classList.add('visible');
+      }
+
+      const googleMapsRect = googleMaps.getBoundingClientRect();
+      if (googleMapsRect.top < window.innerHeight -200 && googleMapsRect.bottom >= 0) {
+        googleMaps.classList.add('visible');
+      }
     },
   },
   mounted() {
-    this.loadGoogleMapsAPI();
+    window.addEventListener('scroll', this.handleScroll);
+    this.handleScroll();
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
 };
 </script>
 
 <style scoped>
+.section-title {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-form-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contact-form-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-info-list {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.contact-info-list.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.contact-info-list li {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.contact-info-list.visible li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.contact-info-list.visible li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.contact-info-list.visible li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.google_maps {
+  opacity: 0;
+  transform: scale(0.5) rotate(0deg);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.google_maps.visible {
+  opacity: 1;
+  transform: scale(1) rotate(720deg);
+}
+
+.section-title {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 #contact .container {
   display: grid;
   grid-template-columns: 40% auto;

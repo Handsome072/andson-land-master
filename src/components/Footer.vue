@@ -2,51 +2,45 @@
   <footer>
     <div class="container">
       <div class="footer-left">
-        <div class="footer-pages">
+        <div class="footer-pages animated">
           <h4>Pages</h4>
           <ul>
             <li><a href="#" title="Aller à l'accueil">Accueil</a></li>
             <li><a href="#" title="Aller au produit">Produit</a></li>
-            <li>
-              <a href="#" title="Aller à la tarification">Tarification</a>
-            </li>
+            <li><a href="#" title="Aller à la tarification">Tarification</a></li>
             <li><a href="#" title="Aller à propos">À propos</a></li>
             <li><a href="#" title="Aller à contact">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-links-1">
+        <div class="footer-links-1 animated">
           <h4>Liens</h4>
           <ul>
             <li><a href="#" title="Aller à l'accueil">Accueil</a></li>
             <li><a href="#" title="Aller au produit">Produit</a></li>
-            <li>
-              <a href="#" title="Aller à la tarification">Tarification</a>
-            </li>
+            <li><a href="#" title="Aller à la tarification">Tarification</a></li>
             <li><a href="#" title="Aller à propos">À propos</a></li>
             <li><a href="#" title="Aller à contact">Contact</a></li>
           </ul>
         </div>
-        <div class="footer-links-2">
+        <div class="footer-links-2 animated">
           <h4>Liens Utiles</h4>
           <ul>
             <li><a href="#" title="Aller à l'accueil">Accueil</a></li>
             <li><a href="#" title="Aller au produit">Produit</a></li>
-            <li>
-              <a href="#" title="Aller à la tarification">Tarification</a>
-            </li>
+            <li><a href="#" title="Aller à la tarification">Tarification</a></li>
             <li><a href="#" title="Aller à propos">À propos</a></li>
             <li><a href="#" title="Aller à contact">Contact</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-right">
-        <div class="footer-location">
+        <div class="footer-location animated">
           <span class="ic-loc"></span>7480 Mockingbird Hill undefined
         </div>
-        <div class="footer-phone">
+        <div class="footer-phone animated">
           <span class="ic-phone"></span>(239) 555-0108
         </div>
-        <ul class="footer-social-link-list">
+        <ul class="footer-social-link-list animated">  
           <li class="footer-facebook-link">
             <a href="#" title="Visitez notre page Facebook">
               <img
@@ -83,10 +77,50 @@
 <script>
 export default {
   name: 'FooterComponent',
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const elements = document.querySelectorAll('.animated');
+      elements.forEach((el, index) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          setTimeout(() => {
+            el.classList.add('slide-in');
+          }, index * 200); 
+        }
+      });
+    }
+  }
 };
 </script>
 
 <style scoped>
+/* Animation CSS */
+@keyframes slideIn {
+  from {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animated {
+  opacity: 0;
+}
+
+.slide-in {
+  animation: slideIn 1s forwards;
+}
+
+/* Le reste du style pour la mise en page */
 footer {
   background: #252b42;
   color: white;
@@ -135,6 +169,7 @@ footer .container {
 .footer-left div ul li a {
   padding: 0;
 }
+
 .footer-left div ul li a:hover {
   color: #2091f9;
 }
