@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="">
+  <section id="about">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
       <div class="left-cta">
         <h2>Fastest way to organize</h2>
