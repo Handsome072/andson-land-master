@@ -4,6 +4,7 @@
     <Hero />
     <About />
     <Features />
+        <Newsletter />
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Header from "./components/Header.vue";
 import Hero from "./components/Hero.vue";
 import About from "./components/About.vue";
 import Features from "./components/Features.vue";
+import Newsletter from './components/Newsletter.vue';
 
 export default {
   components: {
@@ -19,6 +21,7 @@ export default {
     Hero,
     About,
     Features,
+      Newsletter,
   },
 };
 </script>
