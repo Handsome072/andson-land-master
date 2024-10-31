@@ -41,4 +41,4 @@ Pour des détails sur l'installation et la configuration, veuillez consulter le 
 
 **Contributions** : Les suggestions et améliorations sont les bienvenues ! Si vous souhaitez contribuer, veuillez soumettre une demande d'extraction.
 
-**Contact** : Pour toute question ou assistance, n'hésitez pas à me contacter via andsonandriamitovy@gmail.com (mailto:andsonandriamitovy@gmail.com).
+**Contact** : Pour toute question ou assistance, n'hésitez pas à me contacter via andsonandriamitovy@gmail.com.
