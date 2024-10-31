@@ -71,7 +71,7 @@ export default {
 #hero h1,
 #hero p,
 button {
-  opacity: 0; /* Opacité initiale */
+  opacity: 0; 
 }
 
 #hero h1 {
@@ -100,6 +100,8 @@ button {
   font-size: 1.618em;
   box-shadow: var(--btn-shdw);
 }
+
+/* Styles pour animations*/
 
 @keyframes slide-down {
   0% {
@@ -130,6 +132,8 @@ button {
 .animate-slide-up {
   animation: slide-up 2s ease forwards;
 }
+
+/* Styles pour écrans de 560px et moins */
 
 @media (max-width: 560px) {
   #hero {

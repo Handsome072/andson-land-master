@@ -8,6 +8,7 @@
           freelancers
         </p>
       </div>
+
       <div class="contact-form-left" ref="contactFormLeft">
         <form @submit.prevent="submitForm">
           <h3>Contact Us</h3>
@@ -40,6 +41,7 @@
           <button type="submit" class="main" title="Send Message">Send</button>
         </form>
       </div>
+
       <div class="contact-info-right">
         <ul class="contact-info-list" ref="contactInfoList">
           <li><span class="contact_location"></span>{{ address }}</li>
@@ -329,6 +331,7 @@ span.contact_mail {
   height: 400px;
 }
 
+/* Styles pour écrans de 560px et moins */
 @media (max-width: 560px) {
   section {
     padding: 135px clamp(15px, 6vw, 30px);

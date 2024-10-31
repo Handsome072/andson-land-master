@@ -49,27 +49,27 @@ export default {
       const handleScroll = () => {
         if (sectionTitle.value) {
           const rect = sectionTitle.value.getBoundingClientRect();
-          // Animation du section-title lorsqu'il est visible
+          // Animation section-title 
           if (rect.top < window.innerHeight - 200 && rect.bottom >= 0 && !titleAnimated) {
             sectionTitle.value.classList.add('animate');
             titleAnimated = true;
           }
 
-          // Animation séquentielle des plans lorsqu'on continue à scroller
+          // Animation séquentielle des plans 
           if (rect.bottom < window.innerHeight - 400 && titleAnimated) {
             for (let i = 0; i < plans.length; i++) {
               setTimeout(() => {
                 if (!animatedPlans.value.includes(i)) {
                   animatedPlans.value.push(i);
                 }
-              }, i * 300); // 
+              }, i * 300); 
             }
           }
         }
       };
 
       window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Check on load
+      handleScroll(); 
 
       return () => {
         window.removeEventListener('scroll', handleScroll);
@@ -239,6 +239,8 @@ export default {
   text-align: left;
   margin: 0 auto;
 }
+
+/* Styles pour écrans de 560px et moins */
 
 @media (max-width: 560px) {
   #pricing .pricelist {

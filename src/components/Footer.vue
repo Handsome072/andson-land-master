@@ -33,6 +33,7 @@
           </ul>
         </div>
       </div>
+
       <div class="footer-right">
         <div class="footer-location animated">
           <span class="ic-loc"></span>7480 Mockingbird Hill undefined
@@ -100,7 +101,6 @@ export default {
 </script>
 
 <style scoped>
-/* Animation CSS */
 @keyframes slideIn {
   from {
     transform: translateX(50%);
@@ -120,7 +120,6 @@ export default {
   animation: slideIn 1s forwards;
 }
 
-/* Le reste du style pour la mise en page */
 footer {
   background: #252b42;
   color: white;
@@ -226,6 +225,7 @@ footer .container {
   padding: 0;
 }
 
+/* Styles pour écrans de 560px et moins */
 @media (max-width: 560px) {
   footer .container {
     flex-direction: column;

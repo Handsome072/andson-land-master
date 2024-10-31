@@ -127,6 +127,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .header-wrapper {
   display: flex;
@@ -220,6 +221,7 @@ header.sticky a:hover {
   height: auto !important;
 }
 
+/* Styles pour écrans de 560px et moins */
 @media (max-width: 560px) {
   header {
     height: var(--header-height);

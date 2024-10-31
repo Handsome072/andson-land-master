@@ -89,6 +89,7 @@ export default {
     height: 100vh;
     background: transparent;
   }
+  
   @media (max-width: 560px) {
     .overlay {
       width: 100vw;

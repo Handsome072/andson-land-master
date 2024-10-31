@@ -117,23 +117,6 @@ section .container {
   grid-area: five;
 }
 
-@media (max-width: 560px) {
-  .partners-list {
-    margin: 80px 40px;
-    display: grid;
-    gap: 80px;
-    grid-template-columns: auto;
-    grid-template-rows: repeat(6, auto);
-    grid-template-areas:
-      'one'
-      'two'
-      'three'
-      'four'
-      'five'
-      '.';
-  }
-}
-
 .section-title {
   opacity: 0;
   transform: translateY(100px);
@@ -156,4 +139,24 @@ section .container {
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Styles pour écrans de 560px et moins */
+
+@media (max-width: 560px) {
+  .partners-list {
+    margin: 80px 40px;
+    display: grid;
+    gap: 80px;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(6, auto);
+    grid-template-areas:
+      'one'
+      'two'
+      'three'
+      'four'
+      'five'
+      '.';
+  }
+}
+
 </style>

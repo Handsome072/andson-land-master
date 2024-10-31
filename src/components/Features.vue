@@ -1,6 +1,7 @@
 <template>
   <section id="features">
     <div class="container mx-auto">
+      <!-- Title section  -->
       <div class="section-title text-center mb-12 fadeInUp" ref="sectionTitle">
         <h2>Features</h2>
         <p class="text-gray-500">
@@ -8,6 +9,7 @@
         </p>
       </div>
 
+      <!-- Feature section  -->
       <div class="features-list grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center text-center">
         <div
           v-for="(feature, index) in features"
@@ -90,7 +92,7 @@ export default {
         this.sectionTitleVisible = true;
       }
 
-      // Trigger features-list animation if the first feature is in view
+      // Trigger features-list animation 
       const features = this.$refs.features;
       const firstFeature = features[0];
       const firstFeatureRect = firstFeature.getBoundingClientRect();

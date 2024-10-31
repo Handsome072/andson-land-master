@@ -59,7 +59,6 @@ export default {
   },
   methods: {
     animateImageFirst() {
-      // Délai pour simuler l'animation de l'image avant de passer au reste
       setTimeout(() => {
         this.imageAnimationCompleted = true;
       }, 1000); 
@@ -128,28 +127,6 @@ export default {
   animation: fadeInRight 0.5s 2s forwards;
 }
 
-/* Keyframes */
-@keyframes rotateScaleUp {
-  0% {
-    transform: rotate(-720deg) scale(0.3);
-    opacity: 0;
-  }
-  100% {
-    transform: rotate(0deg) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(50px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 
 form button.main {
   color: white;
@@ -239,6 +216,31 @@ button.main {
 .newsletter-right input::placeholder {
   color: #18171d93;
 }
+
+/* Styles pour les animations */
+@keyframes rotateScaleUp {
+  0% {
+    transform: rotate(-720deg) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Styles pour écrans de 560px et moins */
 
 @media (max-width: 560px) {
   #newsletter .container {

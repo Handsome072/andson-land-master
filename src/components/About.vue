@@ -75,7 +75,7 @@ export default {
   max-width: 660px;
 }
 
-/* for animation */
+/* Animation */
 #about {
 
   transform: translateY(100px);
@@ -87,7 +87,7 @@ export default {
   transform: translateY(0);
 }
 
-/* Responsive */
+/* Styles pour écrans de 560px et moins */
 @media (max-width: 560px) {
   #about .container {
     width: 100%;

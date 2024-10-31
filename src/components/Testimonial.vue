@@ -30,7 +30,6 @@
         </div>
       </div>
 
-      <!-- Boutons de navigation -->
       <button
         class="testimoni-prev"
         @click="prevSlide"
@@ -221,7 +220,22 @@ span.index-poin.active {
   opacity: 0.8;
 }
 
-/* Conteneur des contrôles */
+#testimonials {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#testimonials.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#testimonials .section-title {
+  margin-bottom: 0px;
+}
+
+/* Contrôles */
 
 button.testimoni-prev,
 button.testimoni-next {
@@ -246,20 +260,7 @@ button.testimoni-next {
   background: url(@/assets/images/ic_round-navigate-next.svg) no-repeat center;
 }
 
-#testimonials {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-#testimonials.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-#testimonials .section-title {
-  margin-bottom: 0px;
-}
+/* Styles pour écrans de 560px et moins */
 
 @media (max-width: 560px) {
   #testimonials .testimonials-slider {
