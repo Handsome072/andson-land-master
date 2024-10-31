@@ -12,7 +12,7 @@
 :root {
   --primary: #2091f9;
   --text-color: #252b42;
-  --drpshdw: drop-shadow(0px 8.14769px 63.1446px rgba(0, 0, 0, 0.15));
+  --drpshdw: drop-shadow(0px 8.15px 63.14px rgba(0, 0, 0, 0.15));
   --font-family: 'Quicksand', sans-serif, system-ui;
   --header-height: 187px;
   --plan-gap: clamp(40px, 12vw, 80px);
@@ -21,61 +21,31 @@
 }
 
 body {
-  font-family: 'Quicksand', sans-serif, system-ui !important;
+  font-family: var(--font-family) !important;
   font-size: 11px;
   font-weight: normal;
   letter-spacing: 0.2px;
   color: var(--text-color);
-}
-
-body,
-main,
-footer {
   overflow-x: hidden;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  font-size: 6.854em;
-}
-h2 {
-  font-weight: 600;
-  font-size: 4.236em;
-}
-h3 {
-  font-weight: 500;
-  font-size: 2.618em;
-}
-h4,
-p,
-span,
-button.main,
-input,
-textarea,
-q,
-li {
-  font-weight: 400;
-  font-size: 1.618em;
-}
-h5 {
-  font-size: 1em;
-}
-h6 {
-  font-size: 0.618em;
-}
-
-strong,
-b {
-  font-weight: 600;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
   text-transform: capitalize;
+}
+
+h1 { font-size: 6.85em; }
+h2 { font-size: 4.23em; font-weight: 600; }
+h3 { font-size: 2.62em; font-weight: 500; }
+h4, p, span, button.main, input, textarea, q, li {
+  font-weight: 400;
+  font-size: 1.62em;
+}
+h5 { font-size: 1em; }
+h6 { font-size: 0.62em; }
+
+strong, b {
+  font-weight: 600;
 }
 
 section {
@@ -93,8 +63,6 @@ section .container {
   justify-content: center;
   padding: 10px 40px;
 }
-
-/* end here */
 
 a {
   text-decoration: none;
@@ -140,16 +108,13 @@ a {
 }
 
 .sticky .ic-facebook {
-  background: url(@/assets/images/ant-design_facebook-filled-color-primary.svg);
-  background-size: cover;
+  background: url(@/assets/images/ant-design_facebook-filled-color-primary.svg) no-repeat center / cover;
 }
 .sticky .ic-twitter {
-  background: url(@/assets/images/ant-design_twitter-outlined-color-primary.svg);
-  background-size: cover;
+  background: url(@/assets/images/ant-design_twitter-outlined-color-primary.svg) no-repeat center / cover;
 }
 .sticky .ic-linkedin {
-  background: url(@/assets/images/ant-design_linkedin-filled-color-primary.svg);
-  background-size: cover;
+  background: url(@/assets/images/ant-design_linkedin-filled-color-primary.svg) no-repeat center / cover;
 }
 
 button {
@@ -166,15 +131,14 @@ button:hover {
 
 button.main {
   color: white;
-  padding: 20px 60px;
   padding: clamp(12px, 5vw, 20px) clamp(20px, 12vw, 60px);
   border-radius: 35px;
   margin: 0 auto;
   line-height: 1.2;
   box-shadow: var(--btn-shdw);
 }
+
 .section-title {
-  width: 100%;
   max-width: 545px;
   margin: auto;
   color: var(--text-color);
@@ -182,21 +146,11 @@ button.main {
   margin-bottom: 80px;
 }
 
-.section-title h2 {
-  line-height: 1.8;
-  text-align: center;
-  letter-spacing: 0.2px;
-  margin-bottom: 17px;
-}
-
-.section-title p {
+.section-title h2, .section-title p {
   line-height: 1.8;
 }
 
-/* FOoter */
-
-.footer-right .footer-social-link-list,
-.contact-social-link-list {
+.footer-right .footer-social-link-list, .contact-social-link-list {
   display: flex;
   gap: 25px;
   list-style-type: none;
@@ -205,12 +159,6 @@ button.main {
 .footer-right .footer-social-link-list li img,
 .contact-social-link-list li img {
   width: 35px;
-  height: auto;
-}
-
-.footer-right .footer-social-link-list li a,
-.contact-social-link-list li a {
-  padding: 0;
 }
 
 .contact-social-link-list li img {
@@ -220,20 +168,14 @@ button.main {
 #loom-companion-mv3 {
   display: none;
 }
+
 @media (max-width: 560px) {
   :root {
     --header-height: 100px;
     --padding-lr: clamp(15px, 6vw, 30px);
   }
-  h4,
-  p,
-  span,
-  button.main,
-  input,
-  textarea,
-  q,
-  li {
-    font-weight: 400;
+
+  h4, p, span, button.main, input, textarea, q, li {
     font-size: 1.8em;
   }
 
@@ -252,16 +194,11 @@ button.main {
   }
 
   section {
-    padding: 135px clamp(15px, 6vw, 30px);
+    padding: 135px var(--padding-lr);
   }
 
   section .container {
     width: 100%;
-    margin: 0 !important;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 }

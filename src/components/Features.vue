@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div class="section-title text-center mb-12 fadeInUp" ref="sectionTitle">
         <h2>Features</h2>
-        <p>
+        <p class="text-gray-500">
           Most calendars are designed for teams. Slate is designed for freelancers.
         </p>
       </div>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <!-- Video section with animation -->
+      <!-- Video section  -->
       <figure class="features-video fadeInUp" ref="featuresVideoSection">
         <button class="play absolute inset-0 flex items-center justify-center z-10" @click="playVideo">
           <img loading="lazy" src="@/assets/images/el_play.svg" alt="Play" />
@@ -60,10 +60,10 @@ export default {
           description: 'Slate helps you see how many more days you need to work to reach your financial goal.',
         },
       ],
-      animationClasses: ['fadeInLeft', 'fadeInUp', 'fadeInRight'], // Different animations for each feature
-      sectionTitleVisible: false, // Track visibility of section-title
-      featuresVisible: false, // Track if features-list animation has been triggered
-      videoVisible: false, // Track if video animation has been triggered
+      animationClasses: ['fadeInLeft', 'fadeInUp', 'fadeInRight'],
+      sectionTitleVisible: false,
+      featuresVisible: false, 
+      videoVisible: false, 
     };
   },
   mounted() {
