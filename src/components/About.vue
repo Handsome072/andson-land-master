@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 #about {
-  background: white;
+  background: #fff;
 }
 
 #about .container {
@@ -87,6 +87,7 @@ export default {
   transform: translateY(0);
 }
 
+/* Responsive */
 @media (max-width: 560px) {
   #about .container {
     width: 100%;

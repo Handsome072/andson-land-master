@@ -13,14 +13,16 @@
           <nav class="navbar-desktop-menu">
             <a href="#hero" class="home">Home</a>
             <a href="#about" class="about">About</a>
-            <a href="#fe@/assetsures" class="features">Features</a>
+            <a href="#features" class="features">Features</a>
             <a href="#pricing" class="pricing">Pricing</a>
             <a href="#contact" class="contact">Contact</a>
           </nav>
 
-          <div class="logo-center">
-            <img :src="logoSrc" alt="Figma Land Logo" title="Figma Land" />
-          </div>
+         <div class="logo-center">
+           <a href="/#hero">
+           <img :src="logoSrc" alt="Figma Land Logo" title="Figma Land" />
+           </a>
+         </div>
         </div>
 
         <div
@@ -125,17 +127,7 @@ export default {
   },
 };
 </script>
-
 <style scoped>
-.navbar-desktop-menu a {
-  font-weight: 400;
-  font-size: 1.5em;
-}
-
-.navbar-desktop-menu a:hover {
-  background-color: var(--primary);
-}
-
 .header-wrapper {
   display: flex;
   flex-direction: column;
@@ -155,7 +147,6 @@ header {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
   top: 0;
   left: 0;
   z-index: 9;
@@ -184,18 +175,36 @@ nav.navbar-desktop-menu {
 }
 
 .navbar-desktop-menu a {
+  position: relative;
   font-weight: 400;
   font-size: 1.5em;
+  color: inherit;
+  text-decoration: none;
 }
 
-.navbar-desktop-menu a:hover {
+.navbar-desktop-menu a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 3px;
   background-color: var(--primary);
-  color:white;
+  transition: width 0.3s ease;
 }
 
+.navbar-desktop-menu a:hover::after {
+  width: 100%;
+  
+}
+.navbar-desktop-menu a:hover {
+  transform: scale(1.1);
+  margin-top: -3px;
+}
 header.sticky {
   background: #fff;
   filter: var(--drpshdw);
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header.sticky a {
@@ -219,6 +228,7 @@ header.sticky a:hover {
   header .container {
     padding: 0 var(--padding-lr);
   }
+
   nav .navbar-desktop-menu {
     position: absolute;
     top: 0;
@@ -230,10 +240,8 @@ header.sticky a:hover {
     flex-direction: column;
     display: none;
   }
-  nav .right-social {
-    display: none;
-  }
 
+  nav .right-social,
   .navbar-desktop-menu a,
   .right-social {
     display: none;
@@ -242,10 +250,10 @@ header.sticky a:hover {
   .navbar-desktop-menu a.active {
     display: flex;
   }
+
   .mobile-button {
     width: clamp(30px, 9vw, 40px);
     padding: 0;
-    height: auto;
     border-radius: 6px;
     display: block;
     cursor: pointer;
@@ -255,6 +263,7 @@ header.sticky a:hover {
   .mobile-button svg {
     fill: white;
   }
+
   .sticky .mobile-button svg {
     fill: black;
   }

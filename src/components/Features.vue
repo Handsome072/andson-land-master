@@ -148,7 +148,7 @@ export default {
   position: relative;
   width: 100%;
   min-width: 500px;
-  margin-top: 40px;
+  margin-top: 100px;
   opacity: 0;
   transform: translateY(100px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -165,6 +165,7 @@ export default {
   height: auto;
   border-radius: 44.8123px;
   cursor: pointer;
+ filter: var(--drpshdw);
 }
 
 button.play {
