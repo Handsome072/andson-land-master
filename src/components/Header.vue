@@ -189,6 +189,7 @@ nav.navbar-desktop-menu {
 
 .navbar-desktop-menu a:hover {
   background-color: var(--primary);
+  color:white;
 }
 
 header.sticky {

@@ -9,6 +9,7 @@
     <Testimonial />
     <Pricing />
     <Contact />
+    <Footer />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Partner from "./components/Partner.vue";
 import Testimonial from "./components/Testimonial.vue";
 import Pricing from "./components/Pricing.vue";
 import Contact from "./components/Contact.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
@@ -34,6 +36,7 @@ export default {
     Testimonial,
     Pricing,
     Contact,
+    Footer,
   },
 };
 </script>
