@@ -112,7 +112,7 @@ export default {
 
 .features-video {
   position: relative;
-  width: 100%; /* La vidéo occupera 100% de la largeur du conteneur */
+  width: 100%; 
   min-width: 500px;
   margin-top: 40px;
 }
@@ -136,7 +136,7 @@ button.play {
   z-index: 2;
   width: calc(
     10vw + 10px
-  ); /* Taille du bouton en fonction de la largeur de l'écran */
+  );
   height: calc(10vw + 10px);
   min-width: 80px;
   min-height: 80px;

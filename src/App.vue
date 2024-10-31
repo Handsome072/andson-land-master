@@ -7,6 +7,7 @@
     <Newsletter />
     <Partner />
      <Testimonial />
+       <Pricing />
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import Features from "./components/Features.vue";
 import Newsletter from "./components/Newsletter.vue";
 import Partner from "./components/Partner.vue";
 import Testimonial from './components/Testimonial.vue';
+import Pricing from './components/Pricing.vue';
 
 export default {
   components: {
@@ -28,6 +30,7 @@ export default {
     Newsletter,
     Partner,
       Testimonial,
+        Pricing,
   },
 };
 </script>
