@@ -6,8 +6,9 @@
     <Features />
     <Newsletter />
     <Partner />
-     <Testimonial />
-       <Pricing />
+    <Testimonial />
+    <Pricing />
+    <Contact />
   </div>
 </template>
 
@@ -18,8 +19,9 @@ import About from "./components/About.vue";
 import Features from "./components/Features.vue";
 import Newsletter from "./components/Newsletter.vue";
 import Partner from "./components/Partner.vue";
-import Testimonial from './components/Testimonial.vue';
-import Pricing from './components/Pricing.vue';
+import Testimonial from "./components/Testimonial.vue";
+import Pricing from "./components/Pricing.vue";
+import Contact from "./components/Contact.vue";
 
 export default {
   components: {
@@ -29,8 +31,9 @@ export default {
     Features,
     Newsletter,
     Partner,
-      Testimonial,
-        Pricing,
+    Testimonial,
+    Pricing,
+    Contact,
   },
 };
 </script>
